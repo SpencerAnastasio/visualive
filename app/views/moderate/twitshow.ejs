@@ -1,0 +1,122 @@
+<% if(content.type === null){ %>
+  <div class="item twitter text <%= content._id %> twitmod">
+    <div class="social">
+      <i class="fa fa-twitter"></i>
+    </div>
+    <div class="content">
+    </div>
+    <div class="info-container">
+      <div class="user-img">
+        <img src="<%= content.profilePic %>">
+      </div>
+      <div class="info">
+        <span class="user"><%= content.name %></span>
+        <p class="caption"><%= content.caption %></p>
+      </div>
+    </div>
+    <div class="row modForm">
+      <div class="col-xs-6">
+        <form method='post' action='/moderateYes' enctype='multipart/form-data'>
+          <input type="text" name="_id" class="hidden" value="<%= content._id %>">
+          <input type="text" name="tag" class="hidden" value="<%= collect._id %>">
+          <button type="submit" class="btn btn-primary creTog">
+            <h2>YES</h2>
+          </button>
+        </form>
+      </div>
+      <div class="col-xs-6">
+        <form method='post' action='/moderateNo' enctype='multipart/form-data'>
+          <input type="text" name="_id" class="hidden" value="<%= content._id %>">
+          <input type="text" name="tag" class="hidden" value="<%= collect._id %>">
+          <button type="submit" class="btn btn-danger creTog">
+            <h2>NO</h2>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+
+<% if(content.type === 'photo' || content.type === 'video'){ %>
+  <div class="item twitter img <%= content._id %> twitmodmed">
+    <div class="social">
+      <i class="fa fa-twitter"></i>
+    </div>
+    <div class="content">
+      <img src="<%= content.mediaUrl %>">
+    </div>
+    <div class="info-container">
+      <div class="user-img">
+        <img src="<%= content.profilePic %>">
+      </div>
+      <div class="info">
+        <span class="user"><%= content.name %></span>
+        <p class="caption"><%= content.caption %></p>
+      </div>
+    </div>
+    <div class="row modForm">
+      <div class="col-xs-6">
+        <form method='post' action='/moderateYes' enctype='multipart/form-data'>
+          <input type="text" name="_id" class="hidden" value="<%= content._id %>">
+          <input type="text" name="tag" class="hidden" value="<%= collect._id %>">
+          <button type="submit" class="btn btn-primary creTog">
+            <h2>YES</h2>
+          </button>
+        </form>
+      </div>
+      <div class="col-xs-6">
+        <form method='post' action='/moderateNo' enctype='multipart/form-data'>
+          <input type="text" name="_id" class="hidden" value="<%= content._id %>">
+          <input type="text" name="tag" class="hidden" value="<%= collect._id %>">
+          <button type="submit" class="btn btn-danger creTog">
+            <h2>NO</h2>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+
+<% if(content.network != 'twitter'){ %>
+  <div class="item twitter vid <%= content._id %> twitmodmed">
+    <div class="social">
+      <i class="fa fa-twitter"></i>
+    </div>
+    <div class="content">
+      <video id='video' controls preload='none' mediagroup='myVideoGroup' poster="http://media.w3.org/2010/05/sintel/poster.png">
+        <source id='mp4' src="http://media.w3.org/2010/05/sintel/trailer.mp4" type='video/mp4'>
+      </video>
+    </div>
+    <div class="info-container">
+      <div class="user-img">
+        <img src="http://placehold.it/70x70" />
+      </div>
+      <div class="info">
+        <span class="user">@username</span>
+        <p class="caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a velit in justo molestie sollicitudin. Morbi hendrerit iaculis quam quis feugiat. Ut ut neque eros. Suspendisse efficitur tristique elit ac aliquam. Donec velit felis, fermentum eget viverra eu, finibus at sapien. Suspendisse laoreet efficitur nisi, imperdiet mollis sem porta non. Pellentesque accumsan sed sapien eget interdum. Morbi id auctor ante, non mollis sem. Vivamus vitae augue libero.</p>
+      </div>
+    </div>
+    <div class="row modForm">
+      <div class="col-xs-6">
+        <form method='post' action='/moderateYes' enctype='multipart/form-data'>
+          <input type="text" name="_id" class="hidden" value="<%= content._id %>">
+          <input type="text" name="tag" class="hidden" value="<%= collect._id %>">
+          <button type="submit" class="btn btn-primary creTog">
+            <h2>YES</h2>
+          </button>
+        </form>
+      </div>
+      <div class="col-xs-6">
+        <form method='post' action='/moderateNo' enctype='multipart/form-data'>
+          <input type="text" name="_id" class="hidden" value="<%= content._id %>">
+          <input type="text" name="tag" class="hidden" value="<%= collect._id %>">
+          <button type="submit" class="btn btn-danger creTog">
+            <h2>NO</h2>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+<% } %>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Visualive</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/source/app.css">
+    <style>body{padding-top:80px; word-wrap:break-word;}</style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Welcome To Your Sources</h1>
+        <a href="/dashboard" class="btn btn-success btn-sm"> Dashboard</a>
+        <a href="/collections" class="btn btn-success btn-sm"> Collections</a>
+        <a href="/displays" class="btn btn-success btn-sm"> Displays</a>
+        <a href="/moderate" class="btn btn-success btn-sm"> Moderate</a>
+        <a href="/logout" class="btn btn-warning btn-sm"> Logout</a>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="well">
+            <div class="row">
+              <div id="reface" class="col-sm-12">
+                <h3><span class="fa fa-user"></span> Facebook</h3>
+                <a href="/facebookReq">
+                  <button class="btn btn-primary" id="fbConnect"> Connect Facebook</button>
+                </a>
+                <a id="frebut" class="hidden" href='/facebookReq'>
+                  <button class="btn btn-primary"> Refresh Facebook Token</button>
+                </a>
+                <div class='row'>
+                  <div class='col-sm-12'>
+                    <% if (pages.length > 0) { %>
+                      <ul style='padding-left:0;'>
+                        <% pages.forEach(function(page){ %>
+                          <li style='display:inline-block;'>
+                            <form method='post', action='/facebookPage', enctype='multipart/form-data'>
+                              <button type="submit" class="btn btn-success">
+                                <h5><%= page.name%></h5>
+                                <input type="text" name="pageId" class="hidden" value="<%=page.id%>">
+                                <input type="text" name="pageName" class="hidden" value="<%=page.name%>">
+                              </button>
+                            </form>
+                          </li>
+                        <% }); %>
+                        <% if (account.length === 3) { %>
+                          <li style='display:inline-block;'>
+                            <button type="submit" class="btn btn-warning">
+                              <h5><%= account[0]%></h5>
+                              <input type="text" name="accountId" class="hidden" value="<%=account[0]%>">
+                              <input type="text" name="accountName" class="hidden" value="<%=account[1]%>">
+                            </button>
+                          </li>
+                        <% } %>
+                      </ul>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+              <div class="hidden">
+                <h5 id="face"><%=face%></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="well">
+            <div class="row">
+              <div id="retwit" class="col-sm-12">
+                <h3><span class="fa fa-user"></span> Twitter</h3>
+                <a href='/twitterReq'>
+                  <button class="btn btn-primary" id="tweetConnect"> Connect Twitter</button>
+                </a>
+                <a id="trebut" class="hidden" href='/twitterReq'>
+                  <button class="btn btn-primary"> Refresh Twitter Token</button>
+                </a>
+              </div>
+              <div class="hidden">
+                <h5 id="twit"><%=twit%></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="well">
+            <div class="row">
+              <div id="reinsta" class="col-sm-12">
+                <h3><span class="fa fa-user"></span> Instagram</h3>
+                <a href='/instagramReq'>
+                  <button class="btn btn-primary" id="instaConnect"> Connect Instagram</button>
+                </a>
+                <a id="irebut" class="hidden" href='/instagramReq'>
+                  <button class="btn btn-primary"> Refresh Instagram Token</button>
+                </a>
+              </div>
+              <div class="hidden">
+                <h5 id="insta"><%=insta%></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="js/vendor/lodash.min.js"></script>
+    <script src="js/vendor/isotope.pkgd.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/vendor/three.min.js"></script>
+    <script src="js/vendor/zig.js"></script>
+    <script src="js/vendor/CSS3DRenderer.js"></script>
+    <script src="js/vendor/TrackballControls.js"></script>
+    <script src="js/source/main.js"></script>
+  </body>
+</html>

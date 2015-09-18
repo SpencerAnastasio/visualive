@@ -1,0 +1,28 @@
+{
+  "curly"        : true,
+  "eqeqeq"       : false,
+  "immed"        : false,
+  "latedef"      : false,
+  "newcap"       : true,
+  "noarg"        : true,
+  "sub"          : true,
+  "undef"        : true,
+  "boss"         : true,
+  "eqnull"       : true,
+  "browser"      : true,
+  "strict"       : false,
+  "globalstrict" : true,
+  "debug"        : true,
+  "globals"      : {
+    "process"    : true,
+    "console"    : true,
+    "debugger"   : true,
+    "require"    : true,
+    "module"     : true,
+    "__dirname"  : true,
+    "exports"    : true,
+    "global"     : true,
+    "alert"      : true,
+    "oauth_verifier" : true
+  }
+}

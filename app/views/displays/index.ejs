@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Visualive</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/source/app.css">
+    <link rel="stylesheet" href="css/vendor/select2.css">
+    <style>body{padding-top:80px; word-wrap:break-word;}</style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Welcome To Your Displays</h1>
+        <a href="/dashboard" class="btn btn-success btn-sm"> Dashboard</a>
+        <a href="/sources" class="btn btn-success btn-sm"> Sources</a>
+        <a href="/collections" class="btn btn-success btn-sm"> Collections</a>
+        <a href="/moderate" class="btn btn-success btn-sm"> Moderate</a>
+        <a href="/logout" class="btn btn-warning btn-sm"> Logout</a>
+      </div>
+      <button id="createtoggle" type="submit" class="btn btn-primary">
+        <h3>Create A New Display</h3>
+      </button>
+      <section id="createform" class="hidden">
+        <form method='post' action='/displays' enctype='multipart/form-data'>
+          <div class="row">
+            <div class="col-sm-2">
+              <h6> Name It: </h6>
+              <input type="text" name="name" placeholder="Name This Display">
+            </div>
+            <div class="col-sm-2">
+              <h6> Choose Collections: </h6>
+              <% if(collections.length > 0){ %>
+                <select class="collSelect" name="collections" multiple="multiple">
+                  <% collections.forEach(function(collection){ %>
+                    <option value="<%= collection.name %>,<%= collection._id %>">
+                      <%= collection.name %>
+                    </option>
+                  <% }); %>
+                </select>
+              <% } %>
+            </div>
+            <div class="col-sm-2">
+              <h6> Choose Background: </h6>
+              <input type="file" name="bg">
+            </div>
+            <div class="col-sm-2">
+              <h6> Choose Logo: </h6>
+              <input type="file" name="logo">
+            </div>
+            <div class="col-sm-2">
+              <button type="submit" class="btn btn-primary">
+                <h2>Submit</h2>
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+      <% displays.forEach(function(display){ %>
+        <%- include('./show.ejs', {display: display, collections: collections}); %>
+      <% }); %>
+    </div>
+
+    <!-- build:js scripts/compiled.js -->
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/select2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/source/main.js"></script>
+    <!-- endbuild-->
+  </body>
+
+</html>

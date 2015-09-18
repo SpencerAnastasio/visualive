@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>  
+    <meta charset="utf-8">
+    
+    <title>Wall of Planes</title>
+    
+    <meta name="description" content="" />  
+    <meta name="keywords" content="" />
+    <meta name="robots" content="" />
+    
+    <style type="text/css" media="screen">
+      html, body { margin: 0; padding: 0; overflow: hidden; }
+      #main { margin: 0px; padding: 0px; }
+      #threeScene { }
+    </style>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script type="text/javascript">
+      var JonathanTorres = {};
+      
+      JonathanTorres.WallOfPlanes = new function() {
+      
+        var scene;
+        var camera;
+        var renderer;
+        
+        var pivot;
+        var planesContainer;
+        var plane;
+        var projector;
+        
+        var planes = new Array();
+        var numOfPlanesX = 10;
+        var numOfPlanesY = 10;
+        var offset = 5;
+        var mouseX;
+        var mouseY;
+        
+        this.init = function() {
+
+          scene = new THREE.Scene();
+          
+          camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+          camera.position.z = 500;
+          scene.add(camera);
+          
+          pivot = new THREE.Object3D();
+          scene.add(pivot);
+          
+          planesContainer = new THREE.Object3D();
+          pivot.add(planesContainer);
+          
+          projector = new THREE.Projector();
+          
+          for (var x = 0; x < numOfPlanesX; x++) {
+            for (var y = 0; y < numOfPlanesY; y++) {
+              plane = new THREE.Mesh(
+                new THREE.PlaneGeometry(50, 50, 1, 1),
+                new THREE.MeshBasicMaterial( { color : Math.random() * 0xFFFFFF } )
+              );
+              
+              plane.position.x = -(x * (50 + offset));
+              plane.position.y = -(y * (50 + offset));
+              plane.doubleSided = true;
+              
+              planes.push(plane);
+              planesContainer.add(plane);
+            }
+          }
+          
+          planesContainer.position.x = (numOfPlanesX * 50) * 0.5;
+          planesContainer.position.y = (numOfPlanesY * 50) * 0.5;
+          
+          renderer = new THREE.CanvasRenderer();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          
+          $('body').append(renderer.domElement);
+          $(renderer.domElement).attr('id', 'threeScene');
+          
+          render();
+          
+          //some custom events
+          $(window).resize(onResize);
+          $('#threeScene').mousemove(onSceneMouseMove);
+          $('#threeScene').click(onSceneClick);
+        }
+        
+        function render() {
+          requestAnimationFrame(render);
+          
+          var dx = mouseX - (window.innerWidth * 0.5);
+          var dy = mouseY - (window.innerHeight * 0.5);
+          
+          pivot.rotation.x = -dy / 1000;
+          pivot.rotation.y = -dx / 1000;
+          
+          renderer.render(scene, camera);
+        }
+        
+        function onResize(e) {
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        function onSceneMouseMove(e) {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        }
+        
+        function onSceneClick(e) {
+          var vector = new THREE.Vector3((e.clientX / window.innerWidth) * 2 - 1, 
+                          -(e.clientY / window.innerHeight) * 2 + 1, 
+                          0.5 );
+          projector.unprojectVector(vector, camera);
+
+          var ray = new THREE.Ray(camera.position, vector.subSelf(camera.position).normalize());
+          var intersects = ray.intersectObjects(planes);
+          
+          if (intersects.length > 0) {
+            intersects[0].object.material.color.setHex(Math.random() * 0xFFFFFF);
+          }
+        }
+      }
+      
+      $(document).ready(function() {
+        if (Modernizr.canvas) {
+          JonathanTorres.WallOfPlanes.init();
+        }
+      });
+    </script>
+    
+  </head>
+
+  <body>
+    
+  </body>
+
+</html>

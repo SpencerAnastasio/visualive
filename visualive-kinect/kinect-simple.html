@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <title>Simple Kinect Three.js</title>
+    <style>
+      body { margin: 0; background-color:#fff; }
+      canvas { width: 100%; height: 100% }
+    </style>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/CSS3DRenderer.js"></script>
+    <script src="js/stats.min.js"></script>
+    <script src="js/zig.js"></script>
+    <script>
+      var container, stats;
+      var numOfCubesx = 20;
+      var numOfCubesy = 10;
+      var offset = 30;
+      var rendererCSS;
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 1, 1000 );
+
+      renderer = new THREE.WebGLRenderer( { antialias: true } );
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      renderer.setClearColor( 0xffffff );
+      renderer.setPixelRatio( window.devicePixelRatio );
+      container = document.createElement( 'div' );
+      document.body.appendChild( container );
+      container.appendChild( renderer.domElement );
+
+
+       for ( var x = 0; x < numOfCubesx; x++ ) {
+          for (var y = 0; y < numOfCubesy; y++) {
+
+          //var mesh = new THREE.Mesh( geometry, material );
+          //mesh.position.x = Math.random() * 200 - 100;
+          //mesh.position.y = Math.random() * 200 - 100;
+          //mesh.position.x = Math.random() * 200 - 100;
+          //mesh.position.z = Math.random() * 200 - 100;
+          //mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 4 + 2;
+          //scene.add( mesh );
+
+
+
+            var geometry = new THREE.BoxGeometry( 2, 2, 0.3 );
+            var material = new THREE.MeshBasicMaterial( { color: 0x999999 } );
+            var cube = new THREE.Mesh( geometry, material );
+            cube.position.x = (x - (numOfCubesx/2)) * 2.5;
+            cube.position.y = (y - (numOfCubesy/2)) * 2.5;
+            cube.position.z = Math.random() * (5 -4) + 4;;
+            scene.add( cube );
+          }
+
+        }
+
+ 
+
+       // lights
+
+      light = new THREE.DirectionalLight( 0xffffff );
+      light.position.set( 1, 1, 1 );
+      scene.add( light );
+
+      light = new THREE.DirectionalLight( 0x002288 );
+      light.position.set( -1, -1, -1 );
+      scene.add( light );
+
+      light = new THREE.AmbientLight( 0x222222 ); // soft white light
+      scene.add( light );
+
+      stats = new Stats();
+      stats.domElement.style.position = 'absolute';
+      stats.domElement.style.top = '0px';
+      stats.domElement.style.zIndex = 0;
+      container.appendChild( stats.domElement );
+
+
+      function render() {
+        requestAnimationFrame( render );
+        var time = Date.now() * 0.0005;
+        stats.update();
+
+        camera.lookAt( scene.position );
+        renderer.render(scene, camera);
+        //rendererCSS.render( cssScene, camera );
+      }
+
+      function loaded() {
+        var person = {
+          ondataupdate: function (zigdata) {
+            for (var userid in zigdata.users) {
+              var user = zigdata.users[userid];
+              var pos = user.position;
+              // setInterval(function () {
+                camera.position.x = (-pos[0]) * 0.003;
+                camera.position.x = Math.max( Math.min( camera.position.x, 10 ), -10 );
+                camera.position.z = (pos[2]) * 0.005;
+                camera.position.z = Math.max( Math.min( camera.position.z, 20 ), 8 );
+                console.log("x:" + camera.position.x + " z:" + camera.position.z);
+             //}, 3000);
+            }
+          }
+        }
+        zig.addListener(person);
+        render();
+      }
+
+      document.addEventListener('DOMContentLoaded', loaded, false);
+    </script>
+  </body>
+</html>

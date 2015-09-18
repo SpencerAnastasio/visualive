@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Visualive</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/source/app.css">
+    <style>body{padding-top:80px; word-wrap:break-word;}</style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Welcome To Your Dashboard</h1>
+        <a href="/sources" class="btn btn-success btn-sm"> Sources</a>
+        <a href="/collections" class="btn btn-success btn-sm"> Collections</a>
+        <a href="/displays" class="btn btn-success btn-sm"> Displays</a>
+        <a href="/moderate" class="btn btn-success btn-sm"> Moderate</a>
+        <a href="/logout" class="btn btn-warning btn-sm"> Logout</a>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="well">
+            <h3><span class="fa fa-user"></span> User Information</h3>
+            <p>
+              <strong>Username : </strong><%=username%><br>
+              <strong>Email : </strong><%=email%><br>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img id="knife" src="img/knife.gif">
+        </div>
+      </div>
+    </div>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/source/main.js"></script>
+  </body>
+</html>

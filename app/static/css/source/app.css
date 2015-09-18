@@ -1,0 +1,424 @@
+body{
+  padding-top: 0 !important;
+  background-color: black;
+}
+
+.btn{
+  width: 200px !important;
+  margin: 4px 2px !important;
+}
+
+#knife{
+  display: block;
+  margin: 0 auto !important;
+  width: 65%;
+  border-radius: 280px;
+}
+
+form{
+  /*margin-bottom: 30px !important;*/
+}
+
+#createtoggle{
+  display: block;
+  margin: 0 auto !important;
+  width: 45% !important;
+  margin-bottom: 30px !important;
+}
+
+.creTog{
+  display: inline-block !important;
+}
+
+h1{
+  color: gray;
+}
+
+/* ======== KINECT CSS ======== */
+
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -ms-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property:    -moz-transform, opacity;
+  -ms-transition-property:     -ms-transform, opacity;
+  -o-transition-property:      -o-transform, opacity;
+  transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -ms-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+
+
+/* disable CSS transitions for containers with infinite scrolling*/
+.isotope.infinite-scrolling {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+
+/**** Base styles ****/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+
+
+
+/**** Social Display ****/
+
+body.kinect {
+  background: rgb(206,220,231); /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(206,220,231,1) 0%, rgba(89,106,114,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(206,220,231,1)), color-stop(100%,rgba(89,106,114,1))); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover,  rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover,  rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* IE10+ */
+  background: radial-gradient(ellipse at center,  rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedce7', endColorstr='#596a72',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background-image: url(http://node.vslve.com/img/back.jpg);
+  background-size:contain;
+  font-family: "brandon-grotesque";
+  height:100%;
+  width:100%;
+  overflow:hidden;
+}
+
+body.kinect #theater {
+  width:20000px;
+  z-index: -99999;
+  opacity: 0;
+}
+
+#three .item {
+  overflow:hidden!important;
+}
+
+.item {
+  position:relative;
+  width:400px;
+  background:#fff;
+  margin:20px;
+  overflow:hidden!important;
+}
+
+.item.text {
+  height:100px;
+}
+
+.item.link {
+  height:400px;
+}
+
+.item.instamod {
+  height: auto !important;
+}
+
+.item.instamod button{
+  width: 180px !important;
+  margin: 4px 2px !important;
+}
+
+.item.twitmod {
+  height: auto !important;
+}
+
+.item.twitmodmed {
+  height: auto !important;
+}
+
+.item.twitmod button{
+  width: 180px !important;
+  margin: 4px 2px !important;
+}
+
+.item.twitmodmed button{
+  width: 180px !important;
+  margin: 4px 2px !important;
+}
+
+/*.item.img {
+height:500px;
+}*/
+
+.item.vid {
+  height:330px
+}
+
+.content {
+  width:400px;
+}
+
+.content img,
+.content video {
+  width: 400px;
+  height: auto;
+}
+
+.link-content {
+  padding:15px;
+}
+
+.link-title {
+  font-size:22px;
+  font-weight:600;
+  text-decoration:underline;
+}
+
+.link-caption {
+  font-size:12px;
+  line-height:15px;
+  height:30px;
+  margin-top:10px;
+  overflow:hidden;
+  font-weight: 100;
+  color: #000;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.social {
+  position:absolute;
+  top:0px;
+  right:0px;
+  height:60px;
+  width:60px;
+  display:block;
+  color:#fff
+}
+
+.social:before {
+  height:100px;
+  width:100px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+  content:'';
+  display:block;
+  position:absolute;
+  left:20px;
+  top:-50px;
+}
+
+.facebook .social:before {
+  background-color:#3b5998;
+}
+
+.twitter .social:before {
+  background-color:#00aced;
+}
+
+.instagram .social:before {
+  background-color:#517fa4;
+}
+
+.social i {
+  padding:8px;
+  position:absolute;
+  right:0px;
+  font-size:20px;
+}
+
+.info-container {
+  height:100px;
+  padding:15px;
+  display:block;
+}
+
+.modForm {
+  display:block;
+}
+
+.instamod .info-container {
+  height:100px !important;
+  padding:15px;
+  display:block;
+}
+
+.twitmod .info-container {
+  height:100px !important;
+  padding:15px;
+  display:block;
+}
+
+.twitmodmed .info-container {
+  height:100px !important;
+  padding:15px;
+  display:block;
+}
+
+.user-img {
+  display:block;
+  float:left;
+  margin-right:15px;
+  width: 70px;
+  height: 70px;
+}
+
+.user {
+  font-size:13px;
+  font-weight:600;
+}
+
+.caption {
+  font-size: 12px;
+  line-height: 15px;
+  display: block;
+  height: 45px;
+  margin-top: 5px;
+  overflow: hidden;
+  font-weight: 100;
+  color: #000;
+}
+
+#three {
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  background: RGBA(195, 25, 52, 0.9);
+  width: 100%;
+  padding: 15px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.inst {
+  display: block;
+  position: absolute;
+  bottom: -30px;
+  text-align: center;
+  width: 100%;
+}
+
+.logo {
+  background: transparent url(http://node.vslve.com/img/logo.png) top center no-repeat;
+  background-size: contain;
+  display: block;
+  height: 50px;
+  margin: -10px 0px;
+}
+
+header {
+  position:absolute;
+  top:0px;
+  padding:15px;
+  width:100%;
+}
+
+.hashtag {
+  display: block;
+  font-size: 27px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  margin: -4px 0px;
+}
+
+.user-engaged {
+  left: 150%;
+  overflow: hidden;
+  position: fixed;
+  width: 50%;
+  opacity: 0.9;
+  z-index: 1050000000000;
+  transition: left 0.6s ease-out 0s;
+  font-size: 30px;
+  font-weight:600;
+  padding: 35px 15px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.user-engaged .row {
+  padding:15px;
+}
+
+.user-engaged-centered {
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.user-engaged.in {
+   left: 50%;
+}
+
+
+/* Moderate */
+
+body.moderate #theater {
+width: 100%;
+z-index: 0;
+}

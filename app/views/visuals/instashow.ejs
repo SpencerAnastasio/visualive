@@ -1,0 +1,41 @@
+<% if(content.type === 'image' || content.type === 'video'){ %>
+  <div class="item instagram img <%= content._id %> instamod">
+    <div class="social">
+      <i class="fa fa-instagram"></i>
+    </div>
+    <div class="content">
+      <img src="<%= content.image %>">
+    </div>
+    <div class="info-container">
+      <div class="user-img">
+        <img src="<%= content.profilePic %>">
+      </div>
+      <div class="info">
+        <span class="user"><%= content.name %></span>
+        <p class="caption"><%= content.caption %></p>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<% if(content.network != 'instagram'){ %>
+  <div class="item instagram vid <%= content._id %> instamod">
+    <div class="social">
+      <i class="fa fa-instagram"></i>
+    </div>
+    <div class="content">
+      <video id='video' controls preload='none' mediagroup='myVideoGroup' poster="http://media.w3.org/2010/05/sintel/poster.png">
+        <source id='mp4' src="http://media.w3.org/2010/05/sintel/trailer.mp4" type='video/mp4'>
+      </video>
+    </div>
+    <div class="info-container">
+      <div class="user-img">
+        <img src="http://placehold.it/70x70" />
+      </div>
+      <div class="info">
+        <span class="user">@username</span>
+        <p class="caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id auctor ante, non mollis sem. Vivamus vitae augue libero.</p>
+      </div>
+    </div>
+  </div>
+<% } %>

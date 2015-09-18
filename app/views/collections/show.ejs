@@ -1,0 +1,87 @@
+<div class="well">
+  <div class="row">
+    <div class="col-sm-3">
+      <h2><span class="fa fa-number"></span> <%=collection.name%></h2>
+      <p>
+        <strong>Hashtag : </strong> <%=collection.hashtag%><br>
+        <strong>Sources : </strong>
+        <% if (collection.twitter === 'on') { %>
+          <% if (twit === '1') { %>
+            <a href='/sources'>[ Twitter ]</a>
+          <% }else{ %>
+            [ Twitter ]
+          <% } %>
+        <% } %>
+        <% if (collection.instagram === 'on') { %>
+          <% if (insta === '1') { %>
+            <a href='/sources'>[ Instagram ]</a>
+          <% }else{ %>
+            [ Instagram ]
+          <% } %>
+        <% } %>
+      </p>
+    </div>
+    <div class="col-sm-3">
+      <a class="btn btn-success" href='/kinect/<%=collection._id%>'>Display</a>
+    </div>
+    <div class="col-sm-3">
+      <button class="editbut btn btn-warning">
+        <h6 class="ref hidden"><%=collection._id%></h6>
+        <h2 class="edittext">Edit</h2>
+      </button>
+      <button class="cancelbut btn btn-warning hidden">
+        <h6 class="ref hidden"><%=collection._id%></h6>
+        <h2 class="canceltext">Cancel</h2>
+      </button>
+    </div>
+    <div class="col-sm-3">
+      <form method='post', action='/collections/delete', enctype='multipart/form-data'>
+        <input type="text" name="_id" class="hidden" value="<%=collection._id%>">
+        <button type="submit" class="btn btn-danger">
+          <h2>Delete</h2>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<section id="<%=collection._id%>" class="wtf hidden">
+  <form method='post' action='/collections/edit' enctype='multipart/form-data'>
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="text-center">Edit the "<%=collection.name%>" Collection:</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 col-sm-offset-2">
+        <h6> Name: </h6>
+        <input class="lasht" type="text" name="name" value="<%=collection.name%>">
+      </div>
+      <div class="col-sm-2">
+        <h6> Hash: </h6>
+        <input type="text" name="hashtag" value="<%=collection.hashtag%>">
+      </div>
+      <div class="col-sm-2">
+        <h6> Source: </h6>
+        <input class="twittercheck" type="checkbox" name="twitter"
+          <% if (collection.twitter === 'on') { %>
+            checked
+          <% } %>
+        > Twitter <br>
+        <input class="instagramcheck" type="checkbox" name="instagram"
+          <% if (collection.instagram === 'on') { %>
+            checked
+          <% } %>
+        > Instagram <br>
+        <input type="text" name="_id" class="hidden" value="<%=collection._id%>">
+        <input type="text" name="userId" class="hidden" value="<%=collection.userId%>">
+        <input type="text" name="accepted" class="hidden" value="<%=collection.accepted%>">
+        <input type="text" name="rejected" class="hidden" value="<%=collection.rejected%>">
+      </div>
+      <div class="col-sm-4">
+        <button type="submit" class="btn btn-primary">
+          <h2>Submit</h2>
+        </button>
+      </div>
+    </div>
+  </form>
+</section>

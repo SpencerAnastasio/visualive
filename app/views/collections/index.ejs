@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Visualive</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/source/app.css">
+    <link rel="stylesheet" href="css/vendor/select2.css">
+    <style>body{padding-top:80px; word-wrap:break-word;}</style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Welcome To Your Collections</h1>
+        <a href="/dashboard" class="btn btn-success btn-sm"> Dashboard</a>
+        <a href="/sources" class="btn btn-success btn-sm"> Sources</a>
+        <a href="/displays" class="btn btn-success btn-sm"> Displays</a>
+        <a href="/moderate" class="btn btn-success btn-sm"> Moderate</a>
+        <a href="/logout" class="btn btn-warning btn-sm"> Logout</a>
+      </div>
+      <button id="createtoggle" type="submit" class="btn btn-primary">
+        <h3>Create A New Collection</h3>
+      </button>
+      <section id="createform" class="hidden">
+        <form method='post' action='/collections' enctype='multipart/form-data'>
+          <div class="row">
+            <div class="col-sm-2 col-sm-offset-2">
+              <h6> Name It: </h6>
+              <input type="text" name="name">
+            </div>
+            <div class="col-sm-2">
+              <h6> Hash It: </h6>
+              <input type="text" name="hashtag">
+            </div>
+            <div class="col-sm-2">
+              <h6> Source It: </h6>
+              <input type="checkbox" name="twitter"> Twitter <br>
+              <input type="checkbox" name="instagram"> Instagram <br>
+            </div>
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-primary">
+                <h2>Submit</h2>
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+      <% collections.forEach(function(collection){ %>
+        <%- include('./show.ejs', {collection: collection, twit: twit, face: face, insta: insta}); %>
+      <% }); %>
+    </div>
+
+    <!-- build:js scripts/compiled.js -->
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="js/vendor/lodash.min.js"></script>
+    <script src="js/vendor/isotope.pkgd.min.js"></script>
+    <script src="js/vendor/select2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/vendor/three.min.js"></script>
+    <script src="js/vendor/zig.js"></script>
+    <script src="js/vendor/CSS3DRenderer.js"></script>
+    <script src="js/vendor/TrackballControls.js"></script>
+    <script src="js/source/main.js"></script>
+    <!-- endbuild-->
+  </body>
+
+</html>

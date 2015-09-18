@@ -1,0 +1,130 @@
+@font-face {
+  font-family: 'icomoon';
+  src:url('../../fonts/icomoon.eot?-fyn8ez');
+  src:url('../../fonts/icomoon.eot?#iefix-fyn8ez') format('embedded-opentype'),
+    url('../../fonts/icomoon.woff?-fyn8ez') format('woff'),
+    url('../../fonts/icomoon.ttf?-fyn8ez') format('truetype'),
+    url('../../fonts/icomoon.svg?-fyn8ez#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sleigh-bell:before {
+  content: "\e600";
+}
+.icon-big-bell:before {
+  content: "\e601";
+}
+.icon-tree-circles:before {
+  content: "\e602";
+}
+.icon-tree-triangles:before {
+  content: "\e603";
+}
+.icon-rudolph-1:before {
+  content: "\e604";
+}
+.icon-tree-skinny:before {
+  content: "\e605";
+}
+.icon-snow-1:before {
+  content: "\e606";
+}
+.icon-card-1:before {
+  content: "\e607";
+}
+.icon-lights-1:before {
+  content: "\e608";
+}
+.icon-snow-2:before {
+  content: "\e609";
+}
+.icon-card-2:before {
+  content: "\e60a";
+}
+.icon-santa-1:before {
+  content: "\e60b";
+}
+.icon-snow-3:before {
+  content: "\e60c";
+}
+.icon-rudolph-2:before {
+  content: "\e60d";
+}
+.icon-search:before {
+  content: "\e60e";
+}
+.icon-star:before {
+  content: "\e60f";
+}
+.icon-untitled3:before {
+  content: "\e610";
+}
+.icon-info:before {
+  content: "\e611";
+}
+.icon-plus:before {
+  content: "\e612";
+}
+.icon-down:before {
+  content: "\e613";
+}
+.icon-up:before {
+  content: "\e614";
+}
+.icon-send:before {
+  content: "\e615";
+}
+.icon-music:before {
+  content: "\e616";
+}
+.icon-headphones:before {
+  content: "\e617";
+}
+.icon-play:before {
+  content: "\e618";
+}
+.icon-film:before {
+  content: "\e619";
+}
+.icon-tag:before {
+  content: "\e61a";
+}
+.icon-tags:before {
+  content: "\e61b";
+}
+.icon-settings:before {
+  content: "\e61c";
+}
+.icon-equalizer:before {
+  content: "\e61d";
+}
+.icon-sound:before {
+  content: "\e61e";
+}
+.icon-sound-alt:before {
+  content: "\e61f";
+}
+.icon-soundoff:before {
+  content: "\e620";
+}
+.icon-params:before {
+  content: "\e621";
+}
+.icon-music2:before {
+  content: "\e622";
+}

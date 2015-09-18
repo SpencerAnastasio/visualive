@@ -1,0 +1,6 @@
+node_modules/
+app/lib/auth.js
+app/lib/auth.local.js
+app/lib/auth.server.js
+app/lib/init-mongo.local.js
+app/lib/init-mongo.server.js

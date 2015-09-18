@@ -1,0 +1,77 @@
+<!doctype html>
+<!--[if lt IE 7]> <html lang="en-us" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en-us" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en-us" class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>    <html lang="en-us" class="no-js ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en-us" class="no-js"> <!--<![endif]-->
+  <head>
+    <title>Visualive</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/source/app.css">
+    <link rel="stylesheet" href="css/vendor/select2.css">
+    <style>body{padding-top:80px; word-wrap:break-word;}</style>
+  </head>
+  <body class='moderate'>
+    <div class="page-header text-center">
+      <h1><span class="fa fa-anchor"></span> Moderate Your Content </h1>
+      <a href="/dashboard" class="btn btn-success btn-sm"> Dashboard</a>
+      <a href="/sources" class="btn btn-success btn-sm"> Sources</a>
+      <a href="/collections" class="btn btn-success btn-sm"> Collections</a>
+      <a href="/displays" class="btn btn-success btn-sm"> Displays</a>
+      <a href="/logout" class="btn btn-warning btn-sm"> Logout</a>
+    </div>
+    <div class="page-header text-center">
+      <form method='post' action='/moderate' enctype='multipart/form-data'>
+        <select class="collSelect" id="thiscoll" name="coll" onchange="this.form.submit()">
+          <% if(collections.length > 0){ %>
+            <% collections.forEach(function(collection){ %>
+              <option value="<%= collection._id %>">
+                <%= collection.name %>
+              </option>
+            <% }); %>
+          <% } %>
+        </select>
+      </form>
+      <form method='post' action='/moderate' enctype='multipart/form-data'>
+        <select class="displaySelect" id="thisdisplay" name="display" onchange="this.form.submit()">
+          <% if(displays.length > 0){ %>
+            <% displays.forEach(function(display){ %>
+              <option value="<%= display._id %>">
+                <%= display.name %>
+              </option>
+            <% }); %>
+          <% } %>
+        </select>
+      </form>
+    </div>
+    <div id="theater">
+      <% if(contents){ %>
+        <% contents.forEach(function(content){ %>
+          <% if(content.network === 'instagram'){ %>
+            <h6 class="hidden old <%= content._id %>"><%= content._id %></h6>
+            <%- include('./instashow.ejs', {content: content, collect: collect}); %>
+          <% } %>
+          <% if(content.network === 'twitter'){ %>
+            <h6 class="hidden old <%= content._id %>"><%= content._id %></h6>
+            <%- include('./twitshow.ejs', {content: content, collect: collect}); %>
+          <% } %>
+        <% }); %>
+      <% } %>
+    </div>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="js/vendor/lodash.min.js"></script>
+    <script src="js/vendor/jquery.isotope.min.js"></script>
+    <script src="js/vendor/select2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/vendor/three.min.js"></script>
+    <script src="js/vendor/tween.js"></script>
+    <script src="js/vendor/OrbitControls.js"></script>
+    <script src="js/vendor/CSS3DRenderer.js"></script>
+    <script src="js/vendor/zig.js"></script>
+    <script src="js/source/mod.js"></script>
+  </body>
+</html>

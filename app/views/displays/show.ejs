@@ -1,0 +1,96 @@
+<div class="well">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-1">
+      <h2><span class="fa fa-number"></span> <%=display.name%></h2>
+      <p>
+        <strong>Collections : </strong>
+        <% if(display.collections.length > 0){ %>
+          <% display.collections.forEach(function(collection){ %>
+            <%= collection.name %>
+          <% }); %>
+        <% } %>
+        <br>
+      </p>
+    </div>
+    <div class="col-sm-3">
+      <button class="editbut btn btn-warning">
+        <h6 class="ref hidden"><%=display._id%></h6>
+        <h2 class="edittext">Edit</h2>
+      </button>
+      <button class="cancelbut btn btn-warning hidden">
+        <h6 class="ref hidden"><%=display._id%></h6>
+        <h2 class="canceltext">Cancel</h2>
+      </button>
+    </div>
+    <div class="col-sm-3">
+      <form method='post', action='/displays/delete', enctype='multipart/form-data'>
+        <input type="text" name="_id" class="hidden" value="<%=display._id%>">
+        <button type="submit" class="btn btn-danger">
+          <h2>Delete</h2>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<section id="<%=display._id%>" class="wtf hidden">
+  <form method='post' action='/displays/edit' enctype='multipart/form-data'>
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="text-center">Edit the "<%=display.name%>" Display:</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2 col-sm-offset-2">
+        <h6> Name: </h6>
+        <input class="lasht" type="text" name="name" value="<%=display.name%>">
+      </div>
+      <div class="col-sm-3">
+        <div class="row">
+          <div class="col-xs-12">
+            <h6> Background: </h6>
+            <input type="file" name="bg">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h6> Logo: </h6>
+            <input type="file" name="logo">
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <h6> Collections: </h6>
+        <% if(collections.length > 0){ %>
+          <select class="collSelect2" name="collections" multiple="multiple" placeholder="
+            <% if(display.collections.length > 0){ %>
+              <% display.collections.forEach(function(collection){ %>
+                <%= collection.name %>
+              <% }); %>
+            <% } %>">
+            <% collections.forEach(function(collection){ %>
+              <option value="<%= collection.name %>,<%= collection._id %>" selected="selected">
+                <%= collection.name %>
+              </option>
+            <% }); %>
+          </select>
+        <% } %>
+      </div>
+      <div class="hidden">
+        <input type="text" name="userId" class="hidden" value="<%=display.userId%>">
+        <input type="text" name="_id" class="hidden" value="<%=display._id%>">
+      </div>
+      <div class="col-sm-4">
+        <button type="submit" class="btn btn-primary">
+          <h2>Submit</h2>
+        </button>
+      </div>
+    </div>
+  </form>
+</section>

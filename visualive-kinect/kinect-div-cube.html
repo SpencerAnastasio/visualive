@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Simple Kinect Three.js</title>
+    <style>
+      body { margin: 0; background-color:#fff; }
+      canvas { width: 100%; height: 100% }
+    </style>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/CSS3DRenderer.js"></script>
+    <script src="js/stats.min.js"></script>
+    <script src="js/zig.js"></script>
+    <script>
+    // create the plane mesh
+    var material = new THREE.MeshBasicMaterial({ wireframe: true });
+    var geometry = new THREE.PlaneGeometry();
+    var planeMesh= new THREE.Mesh( geometry, material );
+    // add it to the WebGL scene
+    glScene.add(planeMesh);
+    </script>
+  </body>
+</html>

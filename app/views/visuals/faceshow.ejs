@@ -1,0 +1,91 @@
+<% if(content.type === 'photo'){ %>
+  <div class="item facebook img">
+    <div class="social">
+      <i class="fa fa-facebook"></i>
+    </div>
+    <div class="content">
+      <img src="<%=  %>">
+    </div>
+    <div class="info-container">
+      <div class="user-img">
+        <img src="<%= content.account[1] %>">
+      </div>
+      <div class="info">
+        <span class="user"><%= content.from.name %></span>
+        <p class="caption"><%= content.name %></p>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<% if(content.type === 'status'){ %>
+  <div class="item facebook text">
+    <div class="social">
+      <i class="fa fa-facebook"></i>
+    </div>
+    <div class="content">
+    </div>
+    <div class="info-container">
+      <div class="user-img">
+        <img src="<%= content.account[1] %>">
+      </div>
+      <div class="info">
+        <span class="user"><%= content.from.name %></span>
+        <p class="caption"><%= content.message %></p>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<% if(content.type === 'link'){ %>
+  <div class="item facebook link">
+    <div class="social">
+      <i class="fa fa-facebook"></i>
+    </div>
+    <div class="info-container">
+      <div class="user-img">
+        <img src="<%= content.account[1] %>">
+      </div>
+      <div class="info">
+        <span class="user"><%= content.from.name %></span>
+        <p class="caption"><%= content.message %></p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="link-image">
+        <img src="<%= content.picture %>">
+      </div>
+      <div class="link-content">
+        <h1 class="link-title"><%= content.name %></h1>
+        <p class="link-caption"><%= content.description %></p>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<% if(content.type === 'video'){ %>
+  <div class="item facebook vid">
+    <div class="social">
+      <i class="fa fa-facebook"></i>
+    </div>
+    <div class="content">
+      <video id='video' controls preload='none' mediagroup='myVideoGroup' poster="<%= content.picture %>">
+        <source id='mp4' src="<%= content.source %>" type='video/mp4'>
+      </video>
+    </div>
+    <div class="info-container">
+      <div class="user-img">
+        <img src="<%= content.account[1] %>">
+      </div>
+      <div class="info">
+        <span class="user"><%= content.from.name %></span>
+        <p class="caption"><%= content.caption %></p>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<% if(content.network === 'facebook'){ %>
+  <h6 class="hidden old <%= content._id %>"><%= content._id %></h6>
+  <%- include('./faceshow.ejs', {content: content}); %>
+<% } %>
